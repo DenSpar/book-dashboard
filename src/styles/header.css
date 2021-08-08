@@ -24,6 +24,27 @@
     color: #9E9C9C;
   }
 
+.searchBtn {
+    border-radius: 0 4px 4px 0;
+    outline: none;
+    height: 25px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+    vertical-align: center;
+    background-color: #E2ECFF;
+    color: #5A8DEE;
+    border: none;
+}
+
+.searchBtn:hover {
+    background-color: #5A8DEE;
+    color: #FFFFFF;
+}  
+
 .header_sticky {
     position: sticky;
     top: 0;
