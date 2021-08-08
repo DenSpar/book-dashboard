@@ -1,24 +1,18 @@
 import React, { useState } from 'react';
-import sendRequest from '@methods/sendRequest'
+import {connect, useDispatch} from 'react-redux';
+import {searchBook} from '@redux/actions';
 
 const Header = () => {
     const [value, setValue] = useState('');
-
-    const searchBooks = (query) => {
-        const formatedQuery = query.trim().replace(/ /gi, '+');
-        // удаление двойных пробелов
-        // для пагинатора добавить параметр page 
-
-        sendRequest('GET', 'http://openlibrary.org/search.json?q=' + formatedQuery)
-        .then(searchRes => console.log(searchRes))
-        .then(() => setValue(''));
-    };
+    const dispatch = useDispatch();
 
     const submitHandler = (event) => {
         event.preventDefault();
 
         if (value.trim()) {
-        searchBooks(value);
+        // для пагинатора добавить параметр page 
+        dispatch(searchBook(value))
+        .then(() => setValue(''));
         } else {
         setValue('');
         }
@@ -39,4 +33,4 @@ const Header = () => {
     )
 };
 
-export default Header
+export default connect(null, {searchBook})(Header);
