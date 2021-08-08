@@ -1,17 +1,14 @@
 import React from 'react';
 
-const BookCard = () => (
+const BookCard = ({book}) => (
     <div className="contentContainer__listRep_itemContainer flex flex-wrap border_1px border-radius_12px box-sizing">
         <div className="repNameContainer flex align-items_center">
             <img src="book.jpg" alt="" className="repImgForList" />
-            <a href="" className="repNameForList fontDefault text-decoration_none" target="_blank"></a>
+            <span className="bookTitle fontDefault"> {book.title}</span>
         </div>
         <div className="repStarsContainer flex">
-            <img src="star.jpg" alt="" className="repImgForList" />
-            <span className="repStarsNumForList fontDefault"></span>
+            <span className="repStarsNumForList fontDefault">автор: {book.authors}</span>
         </div>
-        <span className="lastCommitForList fontDefault">last commit: </span>
-        <a href="" className="repLink fontDefault">go to book</a>
     </div>
 );
 
