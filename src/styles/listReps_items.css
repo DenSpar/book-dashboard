@@ -8,6 +8,15 @@
     margin-bottom: 10px;
 }
 
+.cover_s {
+    max-width: 80px;
+    /* min-width: 80px; */
+    max-height: 80px;
+    margin-right: 20px;
+}
+
+/* .contentContainer__listRep_itemContainer_infoContainer {} */
+
 .repNameContainer {
     margin-bottom: 10px;
     width: 100%;

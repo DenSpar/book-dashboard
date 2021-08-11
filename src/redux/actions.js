@@ -5,8 +5,7 @@ export function searchBook (query) {
     return async dispatch => {
         const formatedQuery = query.trim().replace(/ /gi, '+');
         // удаление двойных пробелов
-        // для пагинатора добавить параметр page 
-        const response = await sendRequest('GET', 'http://openlibrary.org/search.json?q=' + formatedQuery);
+        const response = await sendRequest('GET', `http://openlibrary.org/search.json?title=${formatedQuery}&limit=100`);
         const parsedResponse = {
             message: `найдено ${response.numFound}`
         };
@@ -16,7 +15,8 @@ export function searchBook (query) {
                 title: get(book,'title', ''),
                 publishDate: get(book,'publish_date', []).join(', '),
                 publisher: get(book,'publisher', []).join(', '),
-                isbn: get(book,'isbn', []).join(', ')
+                isbn: get(book,'isbn', []).join(', '),
+                isbnForCover: get(book,'isbn[0]', '')
             }));
         } else {
             parsedResponse.books = [];
