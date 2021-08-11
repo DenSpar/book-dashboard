@@ -77,6 +77,7 @@ module.exports = {
         alias: {
             '@components': path.resolve(__dirname,'src/components'),
             '@methods': path.resolve(__dirname,'src/methods'),
+            '@redux': path.resolve(__dirname,'src/redux'),
             '@': path.resolve(__dirname,'src')
         }
     }
