@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {connect, useDispatch} from 'react-redux';
 import {searchBook} from '@redux/actions';
 
 const Header = () => {
     const [value, setValue] = useState('');
     const dispatch = useDispatch();
+
+    useEffect(
+        () => {
+          const handler = setTimeout(() => {
+            dispatch(searchBook(value));
+          }, 1000);
+
+          return () => {
+            clearTimeout(handler);
+          };
+        },
+        [value]
+    );
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -24,7 +37,13 @@ const Header = () => {
                 <div className="headerContainer flex justify-content_space-around">
                     <h1 className="headerContainer__appName font-family_Cambria">Let'sFindBooks</h1>
                     <form onSubmit={submitHandler}>
-                        <input type="text" placeholder="Введите название книги" className="headerContainer__searchBlock box-sizing border_1px border-radius_4px" value={value} onChange={event => (setValue(event.target.value))} />
+                        <input
+                            type="text"
+                            placeholder="Введите название книги"
+                            className="headerContainer__searchBlock box-sizing border_1px border-radius_4px"
+                            value={value}
+                            onChange={event => setValue(event.target.value)}
+                        />
                         <button className="searchBtn">Искать</button>
                     </form>
                 </div>
