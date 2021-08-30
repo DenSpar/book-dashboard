@@ -9,7 +9,8 @@ const Header = () => {
     useEffect(
         () => {
           const handler = setTimeout(() => {
-            dispatch(searchBook(value));
+            dispatch(searchBook(value))
+            .then(() => setValue(''));
           }, 1000);
 
           return () => {
@@ -19,33 +20,18 @@ const Header = () => {
         [value]
     );
 
-    const submitHandler = (event) => {
-        event.preventDefault();
-
-        if (value.trim()) {
-        // для пагинатора добавить параметр page 
-        dispatch(searchBook(value))
-        .then(() => setValue(''));
-        } else {
-        setValue('');
-        }
-    };
-
     return (
         <div className="outerContainer backgroundColor header_sticky">
             <div className="innerContainer">
                 <div className="headerContainer flex justify-content_space-around">
                     <h1 className="headerContainer__appName font-family_Cambria">Let'sFindBooks</h1>
-                    <form onSubmit={submitHandler}>
-                        <input
-                            type="text"
-                            placeholder="Введите название книги"
-                            className="headerContainer__searchBlock box-sizing border_1px border-radius_4px"
-                            value={value}
-                            onChange={event => setValue(event.target.value)}
-                        />
-                        <button className="searchBtn">Искать</button>
-                    </form>
+                    <input
+                        type="text"
+                        placeholder="Введите название книги"
+                        className="headerContainer__searchBlock box-sizing border_1px border-radius_4px"
+                        value={value}
+                        onChange={event => setValue(event.target.value)}
+                    />
                 </div>
             </div>
         </div>
