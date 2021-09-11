@@ -24,3 +24,19 @@ export function searchBook (query) {
         dispatch({type: 'NEW_SEARCH', payload: parsedResponse});
     }
 };
+
+export function showBookInfo (bookInfo) {
+    // return dispatch => dispatch({type: 'SHOW_BOOK_INFO', payload: bookInfo});
+    return dispatch => {
+        console.log("click showBookInfo");
+        dispatch({type: 'SHOW_BOOK_INFO', payload: bookInfo})
+    };
+};
+
+export function hideBookInfo (bookInfo) {
+    // return dispatch => dispatch({type: 'HIDE_BOOK_INFO', payload: bookInfo});
+    return dispatch => {
+        console.log("click hideBookInfo");
+        dispatch({type: 'HIDE_BOOK_INFO', payload: bookInfo})
+    };
+};
