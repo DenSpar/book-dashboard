@@ -22,7 +22,7 @@
 .cover_m {
     max-width: 200px;
     max-height: 200px;
-    margin-right: 40px;
+    object-fit: cover;
 }
 
 .modal__closeBtn {
@@ -30,6 +30,12 @@
 }
 
 /* .contentContainer__modal {} */
+
+.contentContainer__modal_imageContainer {
+    width: 200px;
+    height: 200px;
+    margin-right: 40px;
+}
 
 .activeText {
     text-decoration: underline;

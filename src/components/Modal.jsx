@@ -56,7 +56,9 @@ const Modal = (state) => {
             <div className="modal-body flex flex-direction_column justify-content_center align-items_center">
                 <div className="flex flex-direction_column justify-content_center align-items_center">
                     <div className="contentContainer__modal flex">
-                        <img src={`http://covers.openlibrary.org/b/isbn/${book.isbnForCover}-M.jpg?default=false`} alt="битая картинка" className="cover_m" />
+                        <div className="contentContainer__modal_imageContainer flex justify-content_center align-items_center flex-shrink_0">
+                            <img src={`http://covers.openlibrary.org/b/isbn/${book.isbnForCover}-M.jpg?default=false`} alt="битая картинка" className="cover_m" />
+                        </div>
                         <div className="contentContainer__modal flex flex-direction_column">
                             <span className="modalTitleFont">{book.title}</span>
                             <span className="repStarsNumForList fontDefault">
