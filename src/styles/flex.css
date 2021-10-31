@@ -30,6 +30,10 @@
 	align-items: flex-start;
 }
 
+.flex-shrink_0 {
+	flex-shrink: 0;
+}
+
 /*
 .justify-content_start {
 	justify-content: flex-start;
