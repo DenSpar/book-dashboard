@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {connect, useDispatch} from 'react-redux';
-import {searchBook} from '@redux/actions';
+import {startNewSearch, showSearchResult} from '@redux/actions';
 
 const Header = () => {
     const [value, setValue] = useState('');
@@ -8,14 +8,19 @@ const Header = () => {
 
     useEffect(
         () => {
-          const handler = setTimeout(() => {
-            dispatch(searchBook(value))
-            .then(() => setValue(''));
-          }, 1000);
-
-          return () => {
-            clearTimeout(handler);
-          };
+            // удаление двойных пробелов
+            const formatedQuery = value.trim().replace(/ /gi, "+");
+            if(formatedQuery) {
+                const handler = setTimeout(() => {
+                    dispatch(startNewSearch(formatedQuery))
+                    dispatch(showSearchResult(formatedQuery))
+                    .then(() => setValue(''));
+                }, 1000);
+    
+                return () => {
+                    clearTimeout(handler);
+                };    
+            }
         },
         [value]
     );
@@ -38,4 +43,4 @@ const Header = () => {
     )
 };
 
-export default connect(null, {searchBook})(Header);
+export default connect(null, {startNewSearch, showSearchResult})(Header);
