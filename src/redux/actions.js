@@ -38,14 +38,15 @@ const prepareField = (valuesArr, singularFieldName, pluralFieldName, limit = nul
     };
     return field;
 }
+export function startNewSearch (formatedQuery) {
+    return dispatch => dispatch({type: "NEW_SEARCHING", payload: `подождите, идет поиск по запросу "${formatedQuery}"...`});
+};
 
-export function searchBook (query) {
+export function showSearchResult (formatedQuery) {
     return async dispatch => {
-        // удаление двойных пробелов
-        const formatedQuery = query.trim().replace(/ /gi, "+");
         const response = await sendRequest("GET", `http://openlibrary.org/search.json?title=${formatedQuery}&limit=100`);
         const parsedResponse = {
-            message: `найдено ${response.numFound}`
+            message: `по запросу "${formatedQuery}" найдено ${response.numFound} книг`
         };
         if(response.docs.length) {
             parsedResponse.books = response.docs.map(book => ({
@@ -64,8 +65,8 @@ export function searchBook (query) {
         } else {
             parsedResponse.books = [];
         };
-        dispatch({type: "NEW_SEARCH", payload: parsedResponse});
-    }
+        dispatch({type: "SHOW_SEARCH_RESULT", payload: parsedResponse});    
+}
 };
 
 export function showBookInfo (bookInfo) {

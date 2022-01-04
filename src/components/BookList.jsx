@@ -6,7 +6,7 @@ const BookList = (state) => (
     <div className="outerContainer">
         <div className="innerContainer">
             <div className="contentContainer">
-                <h2 className="contentContainer__title fontDefault">найдено результатов...{state.message}</h2>
+                <h2 className="contentContainer__title fontDefault">{state.message}</h2>
                 {state.books.map((book,i) => <BookCard book={book} key={i} />)}
             </div>
         </div>
