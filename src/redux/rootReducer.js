@@ -1,5 +1,5 @@
 const initialState = {
-    message: 'initial message',
+    message: 'введите название книги в поле поиска',
     books: [],
     modal: {}
 };

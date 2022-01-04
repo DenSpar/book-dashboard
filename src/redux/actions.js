@@ -45,7 +45,7 @@ export function searchBook (query) {
         const formatedQuery = query.trim().replace(/ /gi, "+");
         const response = await sendRequest("GET", `http://openlibrary.org/search.json?title=${formatedQuery}&limit=100`);
         const parsedResponse = {
-            message: `найдено ${response.numFound}`
+            message: `по запросу ${formatedQuery} найдено ${response.numFound} книг`
         };
         if(response.docs.length) {
             parsedResponse.books = response.docs.map(book => ({
